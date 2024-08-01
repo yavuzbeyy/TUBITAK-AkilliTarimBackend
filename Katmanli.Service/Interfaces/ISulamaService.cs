@@ -5,14 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.SulamaDTO;
 
 namespace Katmanli.Service.Interfaces
 {
     public interface ISulamaService
     {
-        Task<IResponse<string>> Create(Sulama model);
+        IResponse<string> Create(SulamaCreate model);
         Task<IResponse<string>> Delete(int id);
 
-        IResponse<Sulama> GetSulamaById(int sulamaId);
+        IResponse<SulamaQuery> GetSulamaById(int sulamaId);
     }
 }

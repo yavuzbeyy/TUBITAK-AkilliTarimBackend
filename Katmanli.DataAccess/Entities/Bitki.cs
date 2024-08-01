@@ -9,6 +9,7 @@ namespace Katmanli.DataAccess.Entities
 {
     public class Bitki : BaseEntity
     {
+        public string? Aciklama { get; set; }
         public int? IklimId { get; set; }
 
         public int? ToprakId { get; set; }

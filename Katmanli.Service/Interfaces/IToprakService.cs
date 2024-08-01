@@ -1,4 +1,5 @@
 ﻿using Katmanli.Core.Response;
+using Katmanli.DataAccess.DTOs;
 using Katmanli.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Katmanli.Service.Interfaces
 {
     public interface IToprakService
     {
-        Task<IResponse<string>> Create(Gubreleme model);
+        IResponse<string> Create(ToprakCreate model);
         Task<IResponse<string>> Delete(int id);
-        IResponse<Toprak> GetToprakById(int toprakId);
+        IResponse<ToprakQuery> GetToprakById(int toprakId);
     }
 }

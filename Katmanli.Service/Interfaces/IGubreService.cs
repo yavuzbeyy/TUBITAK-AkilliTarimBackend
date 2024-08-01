@@ -11,9 +11,8 @@ namespace Katmanli.Service.Interfaces
 {
     public interface IGubreService
     {
-        Task<IResponse<string>> Create(Gubreleme model);
+        IResponse<string> Create(GubreCreate model);
         Task<IResponse<string>> Delete(int id);
-
-        IResponse<Gubreleme> GetGubreById(int gubreId);
+        IResponse<GubreQuery> GetGubreById(int gubreId);
     }
 }

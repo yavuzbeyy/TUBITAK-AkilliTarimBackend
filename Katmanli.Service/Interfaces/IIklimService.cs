@@ -5,14 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.IklimDTO;
 
 namespace Katmanli.Service.Interfaces
 {
     public interface IIklimService
     {
-        Task<IResponse<string>> Create(Iklim model);
+        IResponse<string> Create(IklimCreate model);
         Task<IResponse<string>> Delete(int id);
 
-        IResponse<Iklim> GetSehirById(int IklimId);
+        IResponse<IklimQuery> GetSehirById(int IklimId);
     }
 }
