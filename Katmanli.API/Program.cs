@@ -1,9 +1,12 @@
 using Katmanli.Core.Interfaces.DataAccessInterfaces;
+using Katmanli.Core.Interfaces.IUnitOfWork;
 using Katmanli.Core.Interfaces.ServiceInterfaces;
 using Katmanli.Core.SharedLibrary;
 using Katmanli.DataAccess;
 using Katmanli.DataAccess.Entities;
 using Katmanli.DataAccess.Repository;
+using Katmanli.DataAccess.UnitOfWork;
+using Katmanli.Service.Interfaces;
 using Katmanli.Service.Mapping;
 using Katmanli.Service.Services;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +26,13 @@ builder.Services.AddAutoMapper(typeof(MapProfile));
 //Servis Kayýtlarý
 //builder.Services.AddScoped<IGenericRepository<User>,GenericRepository<User>>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenCreator, TokenCreator>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IGubreService, GubreService>();
+builder.Services.AddScoped<IIklimService, IklimService>();
+builder.Services.AddScoped<ISulamaService, SulamaService>();
+builder.Services.AddScoped<IToprakService, ToprakService>();
 
 //DbContext Ekleme
 var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
