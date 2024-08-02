@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.SehirBitkiDTO;
 
 namespace Katmanli.Service.Interfaces
 {
     public interface ISehirBitkiService
     {
-        Task<IResponse<string>> Create(Gubreleme model);
+        IResponse<string> Create(SehirBitkiCreate model);
         Task<IResponse<string>> Delete(int id);
     }
 }
