@@ -40,6 +40,7 @@ namespace Katmanli.Service.Services
         {
             var yeniBitki = new Bitki
             {
+                Ad       = model.Ad,
                 Aciklama = model.Aciklama,
                 IklimId = model.IklimId,
                 ToprakId = model.ToprakId,
@@ -85,6 +86,7 @@ namespace Katmanli.Service.Services
             var bitkiQuery = new BitkiDTO.BitkiQuery
             {
                 Id = bitki.Id,
+                Ad = bitki.Ad,
                 Aciklama = bitki.Aciklama,
                 IklimId = bitki.IklimId,
                 ToprakId = bitki.ToprakId,
@@ -102,6 +104,7 @@ namespace Katmanli.Service.Services
             var bitkiQueries = bitkiler.Select(bitki => new BitkiDTO.BitkiQuery
             {
                 Id = bitki.Id,
+                Ad = bitki.Ad,
                 Aciklama = bitki.Aciklama,
                 IklimId = bitki.IklimId,
                 ToprakId = bitki.ToprakId,
@@ -122,6 +125,7 @@ namespace Katmanli.Service.Services
             }
 
             bitki.Aciklama = model.Aciklama;
+            bitki.Ad = model.Ad;
             bitki.IklimId = model.IklimId;
             bitki.ToprakId = model.ToprakId;
             bitki.SulamaId = model.SulamaId;
@@ -140,10 +144,15 @@ namespace Katmanli.Service.Services
             var bitkiTumBilgiler = new BitkiFullInformation();
 
             var bitki = _bitkiRepository.GetByIdAsync(bitkiId).Result;
+
             if (bitki == null)
             {
                 return new ErrorResponse<BitkiFullInformation>(Messages.NotFound("Bitki"));
             }
+
+           bitkiTumBilgiler.Id = bitki.Id;
+           bitkiTumBilgiler.Ad = bitki.Ad;
+           bitkiTumBilgiler.Aciklama = bitki.Aciklama;
 
             if (bitki.ToprakId != null)
             {
@@ -235,13 +244,6 @@ namespace Katmanli.Service.Services
 
             return bitkiBilgileri;
         }
-
-
-
-
-
-
-
 
 
         private double Haversine(double lat1, double lon1, double lat2, double lon2)

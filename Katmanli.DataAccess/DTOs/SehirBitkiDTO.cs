@@ -11,7 +11,6 @@ namespace Katmanli.DataAccess.DTOs
 
         public class SehirBitkiCreate
         {
-            public int? Id { get; set; }
             public int SehirId { get; set; }
             public int BitkiId { get; set; }
         }

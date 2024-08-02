@@ -11,7 +11,7 @@ namespace Katmanli.DataAccess.DTOs
 
         public class BitkiCreate 
         {
-
+            public string? Ad { get; set; }
             public string? Aciklama { get; set; }
             public int? IklimId { get; set; }
 
@@ -28,6 +28,7 @@ namespace Katmanli.DataAccess.DTOs
 
         public class BitkiQuery
         {
+            public string? Ad { get; set; }
             public int? Id { get; set; }
             public string? Aciklama { get; set; }
             public int? IklimId { get; set; }
@@ -45,6 +46,8 @@ namespace Katmanli.DataAccess.DTOs
         public class BitkiUpdate
         {
             public int Id { get; set; }
+
+            public string? Ad { get; set; }
             public string? Aciklama { get; set; }
             public int? IklimId { get; set; }
 
@@ -61,6 +64,8 @@ namespace Katmanli.DataAccess.DTOs
         public class BitkiFullInformation
         {
             public int Id { get; set; }
+
+            public string? Ad { get; set; }
             public string? Aciklama { get; set; }
             public string? IklimAdi { get; set; }
 

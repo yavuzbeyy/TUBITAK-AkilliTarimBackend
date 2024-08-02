@@ -5,14 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.SehirDTO;
 
 namespace Katmanli.Service.Interfaces
 {
     public interface ISehirService
     {
-        Task<IResponse<string>> Create(Sehir model);
+        IResponse<string> Create(SehirCreate model);
         Task<IResponse<string>> Delete(int id);
 
-        IResponse<Sehir> GetSehirById(int sehirId);
+        IResponse<SehirQuery> GetSehirById(int sehirId);
     }
 }
