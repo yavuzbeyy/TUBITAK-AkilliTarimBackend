@@ -38,6 +38,8 @@ namespace Katmanli.DataAccess
 
         public DbSet<SehirBitki> SehirVeBitkiler { get; set; }
 
+        public DbSet<UploadImage> UploadImages { get; set; }
+
         // Default olarak Admin ve Kullanıcı rollerini Seed data olarak ata.
 
         private void SeedData(ModelBuilder modelBuilder)

@@ -36,6 +36,7 @@ builder.Services.AddScoped<IToprakService, ToprakService>();
 builder.Services.AddScoped<ISehirBitkiService, SehirBitkiService>();
 builder.Services.AddScoped<IBitkiService, BitkiService>();
 builder.Services.AddScoped<ISehirService, SehirService>();
+builder.Services.AddScoped<IUploadService, UploadService>();
 
 //DbContext Ekleme
 var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
