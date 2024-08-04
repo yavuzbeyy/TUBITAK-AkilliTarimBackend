@@ -7,6 +7,7 @@ using Katmanli.DataAccess.Entities;
 using Katmanli.Service.Interfaces;
 using System;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.IklimDTO;
 using static Katmanli.DataAccess.DTOs.SulamaDTO;
 
 namespace Katmanli.Service.Services
@@ -73,5 +74,20 @@ namespace Katmanli.Service.Services
 
             return new SuccessResponse<SulamaQuery>(sulamaQuery);
         }
+
+        public IResponse<IEnumerable<SulamaQuery>> ListAll()
+        {
+            var sulamaTurleri = _sulamaRepository.GetAll();
+
+            var sulamaQuery = sulamaTurleri.Select(iklim => new SulamaQuery
+            {
+                Id = iklim.Id,
+                Ad = iklim.Ad,
+                Aciklama = iklim.Aciklama
+            });
+
+            return new SuccessResponse<IEnumerable<SulamaQuery>>(sulamaQuery);
+        }
     }
-}
+    }
+

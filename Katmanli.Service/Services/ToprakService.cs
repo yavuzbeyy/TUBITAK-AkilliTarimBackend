@@ -7,6 +7,7 @@ using Katmanli.DataAccess.Entities;
 using Katmanli.Service.Interfaces;
 using System;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.IklimDTO;
 
 namespace Katmanli.Service.Services
 {
@@ -73,5 +74,20 @@ namespace Katmanli.Service.Services
 
             return new SuccessResponse<ToprakQuery>(toprakQuery);
         }
+
+        public IResponse<IEnumerable<ToprakQuery>> ListAll()
+        {
+            var topraklar = _toprakRepository.GetAll();
+
+            var toprakQuery = topraklar.Select(iklim => new  ToprakQuery
+            {
+                Id = iklim.Id,
+                Ad = iklim.Ad,
+                Aciklama = iklim.Aciklama
+            });
+
+            return new SuccessResponse<IEnumerable<ToprakQuery>>(toprakQuery);
+        }
     }
-}
+    }
+

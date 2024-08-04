@@ -1,5 +1,6 @@
 ﻿using Katmanli.DataAccess.DTOs;
 using Katmanli.Service.Interfaces;
+using Katmanli.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -48,6 +49,19 @@ namespace Katmanli.API.Controllers
                 return Ok(sulama);
             }
             return NotFound(sulama);
+        }
+
+        [HttpGet("ListAll")]
+        public IActionResult ListAll()
+        {
+
+            var sulamaTurleri = _sulamaService.ListAll();
+
+            if (sulamaTurleri.Success)
+            {
+                return Ok(sulamaTurleri);
+            }
+            return NotFound(sulamaTurleri);
         }
     }
 }

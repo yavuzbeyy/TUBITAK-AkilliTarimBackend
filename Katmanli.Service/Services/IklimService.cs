@@ -73,5 +73,19 @@ namespace Katmanli.Service.Services
 
             return new SuccessResponse<IklimDTO.IklimQuery>(iklimQuery);
         }
+
+        public IResponse<IEnumerable<IklimQuery>> ListAll()
+        {
+            var iklimler = _iklimRepository.GetAll();
+
+            var iklimQuery = iklimler.Select(iklim => new IklimQuery
+            {
+                Id = iklim.Id,
+                Ad = iklim.Ad,
+                Aciklama = iklim.Aciklama
+            });
+
+            return new SuccessResponse<IEnumerable<IklimQuery>>(iklimQuery);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Katmanli.DataAccess.DTOs;
 using Katmanli.Service.Interfaces;
+using Katmanli.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -48,6 +49,19 @@ namespace Katmanli.API.Controllers
                 return Ok(toprak);
             }
             return NotFound(toprak);
+        }
+
+        [HttpGet("ListAll")]
+        public IActionResult ListAll()
+        {
+
+            var topraklar = _toprakService.ListAll();
+
+            if (topraklar.Success)
+            {
+                return Ok(topraklar);
+            }
+            return NotFound(topraklar);
         }
     }
 }

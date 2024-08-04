@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.BitkiDTO;
 
 namespace Katmanli.Service.Interfaces
 {
@@ -14,5 +15,6 @@ namespace Katmanli.Service.Interfaces
         IResponse<string> Create(GubreCreate model);
         Task<IResponse<string>> Delete(int id);
         IResponse<GubreQuery> GetGubreById(int gubreId);
+        IResponse<IEnumerable<GubreQuery>> ListAll();
     }
 }

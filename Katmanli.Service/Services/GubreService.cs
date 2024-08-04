@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.IklimDTO;
 
 namespace Katmanli.Service.Services
 {
@@ -77,5 +78,19 @@ namespace Katmanli.Service.Services
             return new SuccessResponse<GubreQuery>(gubreQuery);
         }
 
+        public IResponse<IEnumerable<GubreQuery>> ListAll()
+        {
+            var gubreler = _gubrelemeRepository.GetAll();
+
+            var gubreQuery = gubreler.Select(iklim => new GubreQuery
+            {
+                Id = iklim.Id,
+                Ad = iklim.Ad,
+                Aciklama = iklim.Aciklama
+            });
+
+            return new SuccessResponse<IEnumerable<GubreQuery>>(gubreQuery);
+        }
     }
-}
+    }
+

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.BitkiDTO;
 using static Katmanli.DataAccess.DTOs.IklimDTO;
 
 namespace Katmanli.Service.Interfaces
@@ -15,5 +16,7 @@ namespace Katmanli.Service.Interfaces
         Task<IResponse<string>> Delete(int id);
 
         IResponse<IklimQuery> GetSehirById(int IklimId);
+
+        IResponse<IEnumerable<IklimQuery>> ListAll();
     }
 }

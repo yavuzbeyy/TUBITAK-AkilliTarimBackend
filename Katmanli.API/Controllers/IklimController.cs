@@ -1,4 +1,5 @@
 ﻿using Katmanli.DataAccess.DTOs;
+using Katmanli.DataAccess.Entities;
 using Katmanli.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +49,19 @@ namespace Katmanli.API.Controllers
                 return Ok(iklim);
             }
             return NotFound(iklim);
+        }
+
+        [HttpGet("ListAll")]
+        public IActionResult ListAll() 
+        {
+        
+            var iklimler = _iklimService.ListAll();
+
+            if (iklimler.Success)
+            {
+                return Ok(iklimler);
+            }
+            return NotFound(iklimler);
         }
     }
 }

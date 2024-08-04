@@ -74,5 +74,10 @@ namespace Katmanli.Service.Services
 
             return new SuccessResponse<SehirQuery>(sehirQuery);
         }
+
+        public IResponse<IEnumerable<SehirQuery>> ListAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

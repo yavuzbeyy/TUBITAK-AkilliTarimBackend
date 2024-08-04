@@ -1,5 +1,6 @@
 ﻿using Katmanli.DataAccess.DTOs;
 using Katmanli.Service.Interfaces;
+using Katmanli.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,6 +48,19 @@ namespace Katmanli.API.Controllers
                 return Ok(gubre);
             }
             return NotFound(gubre);
+        }
+
+        [HttpGet("ListAll")]
+        public IActionResult ListAll()
+        {
+
+            var gubreler = _gubreService.ListAll();
+
+            if (gubreler.Success)
+            {
+                return Ok(gubreler);
+            }
+            return NotFound(gubreler);
         }
     }
 }
