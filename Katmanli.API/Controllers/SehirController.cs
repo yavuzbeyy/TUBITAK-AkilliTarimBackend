@@ -1,5 +1,6 @@
 ﻿using Katmanli.DataAccess.DTOs;
 using Katmanli.Service.Interfaces;
+using Katmanli.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -49,6 +50,19 @@ namespace Katmanli.API.Controllers
                 return Ok(sehir);
             }
             return NotFound(sehir);
+        }
+
+        [HttpGet("ListAll")]
+        public IActionResult ListAll()
+        {
+
+            var sehirler = _sehirService.ListAll();
+
+            if (sehirler.Success)
+            {
+                return Ok(sehirler);
+            }
+            return NotFound("Şehirler");
         }
     }
 }

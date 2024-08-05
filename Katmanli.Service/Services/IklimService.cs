@@ -56,7 +56,7 @@ namespace Katmanli.Service.Services
             return new SuccessResponse<string>(Messages.Delete("İklim"));
         }
 
-        public IResponse<IklimQuery> GetSehirById(int iklimId)
+        public IResponse<IklimQuery> GetIklimById(int iklimId)
         {
             var iklim = _iklimRepository.GetByIdAsync(iklimId).Result;
             if (iklim == null)

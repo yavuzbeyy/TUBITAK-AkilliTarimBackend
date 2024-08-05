@@ -7,6 +7,8 @@ using Katmanli.DataAccess.Entities;
 using Katmanli.Service.Interfaces;
 using System;
 using System.Threading.Tasks;
+using static Katmanli.DataAccess.DTOs.SehirBitkiDTO;
+using static Katmanli.DataAccess.DTOs.SehirDTO;
 
 namespace Katmanli.Service.Services
 {
@@ -54,5 +56,26 @@ namespace Katmanli.Service.Services
 
             return new SuccessResponse<string>(Messages.Delete("Şehir Bitki"));
         }
+
+        public IResponse<IEnumerable<SehirBitkiDTO.SehirBitkiQuery>> GetBitkilerBySehirId(int sehirId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResponse<IEnumerable<SehirBitkiDTO.SehirBitkiQuery>> ListAll()
+        {
+            var sehirVeBitkiler = _sehirBitkiRepository.GetAll();
+
+            var sehirBitkiQuery = sehirVeBitkiler.Select(sehirVeBitki => new SehirBitkiQuery
+            {
+                Id = sehirVeBitki.Id,
+                BitkiId = sehirVeBitki.BitkiId,
+                SehirId = sehirVeBitki.SehirId
+            });
+
+            return new SuccessResponse<IEnumerable<SehirBitkiQuery>>(sehirBitkiQuery);
+        }
+
+        
     }
 }

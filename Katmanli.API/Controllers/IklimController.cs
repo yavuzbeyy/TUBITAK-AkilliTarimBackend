@@ -40,10 +40,10 @@ namespace Katmanli.API.Controllers
             return BadRequest(iklimSil);
         }
 
-        [HttpGet("GetSehirById/{id}")]
-        public IActionResult GetSehirById(int id)
+        [HttpGet("GetIklimById/{id}")]
+        public IActionResult GetIklimById(int id)
         {
-            var iklim = _iklimService.GetSehirById(id);
+            var iklim = _iklimService.GetIklimById(id);
             if (iklim.Success)
             {
                 return Ok(iklim);

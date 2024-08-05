@@ -15,7 +15,7 @@ namespace Katmanli.Service.Interfaces
         IResponse<string> Create(IklimCreate model);
         Task<IResponse<string>> Delete(int id);
 
-        IResponse<IklimQuery> GetSehirById(int IklimId);
+        IResponse<IklimQuery> GetIklimById(int IklimId);
 
         IResponse<IEnumerable<IklimQuery>> ListAll();
     }

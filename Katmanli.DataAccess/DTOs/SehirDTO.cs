@@ -22,6 +22,8 @@ namespace Katmanli.DataAccess.DTOs
 
         public class SehirQuery
         {
+
+            public int Id { get; set; }
             public string SehirAdi { get; set; }
 
             //Enlem

@@ -1,5 +1,6 @@
 ﻿using Katmanli.DataAccess.DTOs;
 using Katmanli.Service.Interfaces;
+using Katmanli.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -37,6 +38,19 @@ namespace Katmanli.API.Controllers
                 return Ok(sehirBitkiSil);
             }
             return BadRequest(sehirBitkiSil);
+        }
+
+        [HttpGet("ListAll")]
+        public IActionResult ListAll()
+        {
+
+            var sehirVeBitkiler = _sehirBitkiService.ListAll();
+
+            if (sehirVeBitkiler.Success)
+            {
+                return Ok(sehirVeBitkiler);
+            }
+            return NotFound("Şehirlere ait bitkiler");
         }
     }
 }

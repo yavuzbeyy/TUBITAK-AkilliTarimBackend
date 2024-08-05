@@ -77,7 +77,20 @@ namespace Katmanli.Service.Services
 
         public IResponse<IEnumerable<SehirQuery>> ListAll()
         {
-            throw new NotImplementedException();
+            var sehirler = _sehirRepository.GetAll();
+
+            var sehirQuery = sehirler.Select(sehir => new SehirQuery 
+            {
+                Id = sehir.Id,
+                SehirAdi = sehir.SehirAdi,
+                BoylamKoordinat = sehir.BoylamKoordinat,
+                EnlemKoordinat = sehir.EnlemKoordinat
+            });
+       
+         return new SuccessResponse<IEnumerable<SehirQuery>>(sehirQuery);
+
         }
+
+
     }
 }
