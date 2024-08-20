@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -22,6 +24,16 @@ builder.Services.AddSwaggerGen();
 
 // AutoMapper konfigürasyonu
 builder.Services.AddAutoMapper(typeof(MapProfile));
+
+//CORS Hatasi çözümü
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 
 //Servis Kayýtlarý
 //builder.Services.AddScoped<IGenericRepository<User>,GenericRepository<User>>();
@@ -45,12 +57,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Use the CORS policy
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
