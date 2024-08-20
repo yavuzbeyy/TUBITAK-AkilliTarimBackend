@@ -154,6 +154,9 @@ namespace Katmanli.Service.Services
            bitkiTumBilgiler.Ad = bitki.Ad;
            bitkiTumBilgiler.Aciklama = bitki.Aciklama;
 
+            //boşsa default resim döndürülebilir
+            bitkiTumBilgiler.Fotokey = bitki.Fotokey;
+
             if (bitki.ToprakId != null)
             {
                 var bitkininTopragi = _toprakRepository.GetByIdAsync(bitki.ToprakId.Value).Result;
